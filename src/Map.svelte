@@ -71,6 +71,7 @@
   #map_container {
     margin: auto auto 3vh auto;
     width: 90vw;
+    max-width: 640px;
   }
   .card {
     padding: 3px 5px;
@@ -97,7 +98,8 @@
   <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
 </p>
 <div id="map_container">
-  <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="300 0 500 500" preserveAspectRatio="xMidYMid meet">
+  <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
     <g>
       {#each mode as feature, i}
         <path
