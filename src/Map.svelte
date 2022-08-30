@@ -18,10 +18,8 @@
   let f_pp = [];
   $: mode = f_ccaa;
 
-  let selected;
   let hovered;
   let visited_list = get(stored_visited_list) ? get(stored_visited_list) : {};
-  let new_list = [];
 
   let mousePosition = { x: 0, y: 0 }; 
   let tooltipTarget = null;
@@ -151,8 +149,6 @@
     {/each}
   </fieldset>
 </div>
-
-{ Object.keys(visited_list).length }
 
 <audio id="overSound" preload="auto">
 	<source src="./audio/kettei44.mp3" type="audio/mp3">
