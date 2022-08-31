@@ -36,6 +36,7 @@
 
   function addToList(properties) {
     document.getElementById("overSound").currentTime = 0;
+    document.getElementById("overSound").load();
 		document.getElementById("overSound").play();
     if (visited_list[properties.name]) {
       delete visited_list[properties.name]
