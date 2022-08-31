@@ -98,7 +98,7 @@
   <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
 </p>
 <div id="map_container">
-  <svg viewBox="300 0 500 500" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="300 0 520 500" preserveAspectRatio="xMidYMid meet">
   <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
     <g>
       {#each mode as feature, i}
