@@ -98,7 +98,7 @@
   <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
 </p>
 <div id="map_container">
-  <svg viewBox="300 0 520 500" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="300 0 520 500" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
   <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
     <g>
       {#each mode as feature, i}
@@ -132,7 +132,7 @@
 </div> -->
 
 <div>
-  <fieldset style="text-align: left;">
+  <fieldset style="text-align: left; background-color: white;">
     <legend><strong>Comunidades Autónomas</strong></legend>
     {#each mode as feature}
     <div id="checkboxes">
