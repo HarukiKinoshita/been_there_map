@@ -2,20 +2,24 @@
 <script>
   import * as d3_composite from "d3-composite-projections";
   import { geoAlbers, geoNaturalEarth1, geoPath } from "d3-geo";
+  import { select } from 'd3-selection';
   import { getContext, onMount } from "svelte";
   import { feature } from "topojson";
 
   import { get } from 'svelte/store'
   import { stored_visited_list } from './stores'
 
-  // const projection = geoNaturalEarth1().scale(2000).translate([460,1900]);
-  const projection = d3_composite.geoConicConformalSpain();
+  const projection = d3_composite.geoConicConformalSpain().translate([150,250]);
   const path = geoPath().projection(projection);
+
 
   $: themeColor = "#ff3e00";
 
   let f_ccaa = [];
+  let f_ccaa_original = [];
   let f_pp = [];
+  let f_canarias = [];
+  let canariapath;
   $: mode = f_ccaa;
 
   let hovered;
@@ -29,9 +33,26 @@
       "https://unpkg.com/es-atlas/es/provinces.json"
     ).then(d => d.json())
     
-    // Excluir Ceuta y Melilla
-    f_ccaa = feature(response, response.objects.autonomous_regions).features.filter(el => !el.properties.name.includes("Ciudad Autónoma de"));
+    f_ccaa_original = feature(response, response.objects.autonomous_regions);
+    f_ccaa = {
+      ...f_ccaa_original,
+      features: f_ccaa_original.features.filter(
+        // Excluir Ceuta y Melilla
+        el => !el.properties.name.includes("Ciudad Autónoma de")
+      )
+    }.features;
+    f_canarias = {
+      ...f_ccaa_original,
+      features: f_ccaa_original.features.find(
+        // Excluir Ceuta y Melilla
+        el => el.properties.name.includes("Canarias")
+      )
+    }.features;
     f_pp = feature(response, response.objects.provinces).features;
+
+    console.log(canariapath);
+    select(canariapath)
+      .attr("transform", "translate(200, 20)");
   });
 
   function addToList(properties) {
@@ -99,10 +120,10 @@
   <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
 </p>
 <div id="map_container">
-  <svg viewBox="300 0 520 500" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+  <svg viewBox="0 0 500 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
   <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
     <g>
-      {#each mode as feature, i}
+      {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
         <path
           id={feature.properties.name}
           d={path(feature)}
@@ -115,6 +136,16 @@
         />
       {/each}
     </g>
+    <path
+      bind:this={canariapath}
+      d={path(f_canarias)}
+      class="area"
+      fill={visited_list["Canarias"] ? themeColor : "#fff"}
+      on:mouseover={() => {hovered = f_canarias, showTooltip(f_canarias.properties.name)}}
+      on:mouseleave={() => {tooltipTarget = null}}
+      on:focus={() => {hovered = f_canarias}}
+      on:click={() => {addToList(f_canarias.properties)}}
+    ></path>
   </svg>
 </div>
 
@@ -151,6 +182,10 @@
     </div>
     {/each}
   </fieldset>
+</div>
+
+<div style="margin-top: 2vh;">
+  <button on:click={() => {stored_visited_list.set(null), visited_list = {}}} class="button">Reiniciar</button>
 </div>
 
 <audio id="overSound" preload="auto">
