@@ -215,8 +215,10 @@
   </fieldset>
 </div>
 
-<div style="margin-top: 2vh;">
-  <button on:click={() => {getImage()}} class="button-orange">Exportar Mapa</button>
+<div style="position: fixed; right: 24px; bottom: 24px;">
+  <button on:click={() => {getImage()}} class="button-orange">
+    Exportar Mapa
+  </button>
 </div>
 
 <audio id="overSound" preload="auto">
