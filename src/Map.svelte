@@ -216,7 +216,7 @@
 </div>
 
 <div style="margin-top: 2vh;">
-  <button on:click={() => {getImage()}} class="button-orange">Exportar imagen</button>
+  <button on:click={() => {getImage()}} class="button-orange">Exportar Mapa</button>
 </div>
 
 <audio id="overSound" preload="auto">
