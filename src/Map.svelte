@@ -50,7 +50,7 @@
     f_canarias = {
       ...f_ccaa_original,
       features: f_ccaa_original.features.find(
-        // Excluir Ceuta y Melilla
+        // Excluir Canarias
         el => el.properties.name.includes("Canarias")
       )
     }.features;
@@ -149,7 +149,7 @@
     <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
   </p>
   <div id="map_container">
-    <svg viewBox="0 0 500 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+    <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
     <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
       <g>
         {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
