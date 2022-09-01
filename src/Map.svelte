@@ -27,6 +27,7 @@
 
   let hovered;
   let visited_list = get(stored_visited_list) ? get(stored_visited_list) : {};
+  let count = get(stored_visited_list) ? Object.keys(get(stored_visited_list)).length : 0;
 
   let mousePosition = { x: 0, y: 0 }; 
   let tooltipTarget = null;
@@ -70,13 +71,13 @@
       delete visited_list[properties.name]
       // make it reactive
       visited_list = visited_list;
-      // document.getElementById(properties.name).style.fill = "#fff";
+      count--;
     }
     else {
       visited_list[properties.name] = 1;
       // make it reactive
       visited_list = visited_list;
-      // document.getElementById(properties.name).style.fill = themeColor;
+      count++;
     }
     stored_visited_list.set(visited_list);
   }
@@ -117,7 +118,7 @@
     background-color: hsl(0, 0%, 95%);
   }
   #map_container {
-    margin: auto auto 3vh auto;
+    margin: auto;
     max-width: 640px;
   }
   .card {
@@ -145,7 +146,7 @@
 <div id="wrapper">
   <p>
     <span style="color: slategray">Ya he visitado</span><br>
-    <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
+    <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
   </p>
   <div id="map_container">
     <svg viewBox="0 0 500 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
