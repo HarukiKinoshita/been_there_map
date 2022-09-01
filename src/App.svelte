@@ -21,8 +21,6 @@
 	}
 	main {
 		text-align: center;
-		margin: 0;
-		padding: 1em;
 		margin: 0 auto;
 	}
 	footer {
