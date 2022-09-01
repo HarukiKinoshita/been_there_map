@@ -211,7 +211,7 @@
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list.set(null), visited_list = {}}} class="button">Reiniciar</button>
+    <button on:click={() => {stored_visited_list.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
 </div>
 
