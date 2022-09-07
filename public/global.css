@@ -49,6 +49,7 @@ button {
 	color: #333;
 	background-color: #f4f4f4;
 	outline: none;
+	cursor: pointer;
 }
 
 button:disabled {
@@ -61,4 +62,13 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
+}
+
+.button-orange {
+	background-color: #ff3e00;
+	border: 1px solid #ff3e00;
+	border-radius: 100px;
+	box-shadow: rgba(90, 90, 100, 0.3) 0px 7px 29px 0px;
+	padding: .5em 1em;
+	color: white;
 }
