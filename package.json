@@ -25,6 +25,7 @@
     "html-to-image": "^1.10.6",
     "sirv-cli": "^2.0.0",
     "svelte-local-storage-store": "^0.3.1",
+    "svelte-routing": "^1.6.0",
     "topojson": "^3.0.2"
   }
 }
