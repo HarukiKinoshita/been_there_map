@@ -1,12 +1,12 @@
 <script>
-	import Map from './Map.svelte';
+	import Spain from './Spain.svelte';
 </script>
 
 <header>
 	Visited Communities Map
 </header>
 <main>
-	<Map />
+	<Spain />
 </main>
 <footer>
 	&copy; Haruki Kinoshita

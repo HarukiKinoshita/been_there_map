@@ -142,36 +142,6 @@
   }
 </style>
 
-<<<<<<< HEAD
-
-<p>
-  <span style="color: slategray">Ya he visitado</span><br>
-  <span class="headline">{ Object.keys(visited_list).length }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
-</p>
-<div id="map_container">
-  <svg viewBox="-200 200 500 500" preserveAspectRatio="xMidYMid meet" style="border: 1px solid black;">
-  <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
-    <g>
-      {#each mode.filter(el => el.properties.name !== "Canarias") as feature, i}
-        <path
-          id={feature.properties.name}
-          d={default_path(feature)}
-          class="area"
-          fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
-          on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
-          on:mouseleave={() => {tooltipTarget = null}}
-          on:focus={() => {hovered = feature}}
-          on:click={() => {addToList(feature.properties)}} 
-        />
-      {/each}
-      <path
-        d={translated_path(mode.find(el => el.properties.name == "Canarias"))}
-        class="area"
-        fill={"blue"}
-      />
-    </g>
-  </svg>
-=======
 <div id="wrapper">
   <p>
     <span style="color: slategray">Ya he visitado</span><br>
@@ -206,7 +176,6 @@
       ></path>
     </svg>
   </div>
->>>>>>> master
 </div>
 
 <!-- Tooltip -->
