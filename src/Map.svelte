@@ -12,16 +12,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list } from './stores'
 
-<<<<<<< HEAD
-  // const projection = geoNaturalEarth1().scale(2000).translate([460,1900]);
-  const projection = d3_composite.geoConicConformalSpain();
-  const default_path = geoPath().projection(projection.translate([0, 0]));
-  const translated_path = geoPath().projection(projection.translate([0, 200]));
-=======
   const projection = d3_composite.geoConicConformalSpain().translate([150,250]);
   const path = geoPath().projection(projection);
->>>>>>> master
-
 
   $: themeColor = "#ff3e00";
 
