@@ -1,19 +1,20 @@
 <script>
 	import Router, { location, link } from 'svelte-spa-router'
 	import Spain from './Spain.svelte';
-	import Europe from './Europe.svelte'
+	import Europe from './Europe.svelte';
+	import Home from './Home.svelte';
 
 	const routes = {
-    '/': Spain,
+    '/': Home,
     '/spain': Spain,
 		'/europe': Europe,
-    '*': Spain
+    '*': Home
   };
 </script>
 
 <header>
-	{ $location.substr(1) }
-</header>
+	Been There Map
+</header>z
 <main>
   <Router routes={routes}></Router>
 </main>
