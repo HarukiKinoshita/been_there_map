@@ -1,7 +1,8 @@
 
 <script>
   import * as d3_composite from "d3-composite-projections";
-  import { geoPath } from "d3-geo";
+  import { geoPath, geoConicConformal } from "d3-geo";
+  import { geoBonne, geoModifiedStereographicLee } from "d3-geo-projection";
   import { select } from 'd3-selection';
   import { getContext, onMount } from "svelte";
   import { feature } from "topojson";
@@ -9,23 +10,25 @@
   import * as htmlToImage from 'html-to-image';
 
   import { get } from 'svelte/store'
-  import { stored_visited_list_spain } from './stores'
+  import { stored_visited_list_europe } from './stores'
 
-  const projection = d3_composite.geoConicConformalSpain().translate([150,250]);
+  const projection = geoBonne()
+    .rotate([-20.0, 0.0])
+    .center([0.0, 52.0])
+    .parallel(52)
+    .translate([260, 240])
+    .scale(640)
+    .precision(.1)
   const path = geoPath().projection(projection);
 
   $: themeColor = "#ff3e00";
 
-  let f_ccaa = [];
-  let f_ccaa_original = [];
-  let f_pp = [];
-  let f_canarias = [];
-  let canariapath;
-  $: mode = f_ccaa;
+  let f_nations = [];
+  $: mode = f_nations;
 
   let hovered;
-  let visited_list = get(stored_visited_list_spain) ? get(stored_visited_list_spain) : {};
-  let count = get(stored_visited_list_spain) ? Object.keys(get(stored_visited_list_spain)).length : 0;
+  let visited_list = get(stored_visited_list_europe) ? get(stored_visited_list_europe) : {};
+  let count = get(stored_visited_list_europe) ? Object.keys(get(stored_visited_list_europe)).length : 0;
 
   let mousePosition = { x: 0, y: 0 }; 
   let tooltipTarget = null;
@@ -34,51 +37,30 @@
 
   onMount(async () => {
     const response = await fetch(
-      "https://unpkg.com/es-atlas/es/provinces.json"
+      "https://raw.githubusercontent.com/leakyMirror/map-of-europe/27a335110674ae5b01a84d3501b227e661beea2b/TopoJSON/europe.topojson"
+      // Source: https://github.com/leakyMirror/map-of-europe
     ).then(d => d.json())
     
-    f_ccaa_original = feature(response, response.objects.autonomous_regions);
-    console.log(f_ccaa_original);
-    f_ccaa = {
-      ...f_ccaa_original,
-      features: f_ccaa_original.features.filter(
-        // Excluir Ceuta y Melilla
-        el => !el.properties.name.includes("Ciudad Autónoma de")
-      )
-    }.features;
-    f_canarias = {
-      ...f_ccaa_original,
-      features: f_ccaa_original.features.find(
-        // Excluir Canarias
-        el => el.properties.name.includes("Canarias")
-      )
-    }.features;
-    f_pp = feature(response, response.objects.provinces).features;
-
-    // Canarias
-    console.log(canariapath);
-    select(canariapath)
-      .attr("transform", "translate(200, 20)");
-
-      node = document.getElementById('wrapper');
+    f_nations = feature(response, response.objects.europe).features.filter(el => el.id !== "IL");;
+    console.log(f_nations);
   });
 
   function addToList(properties) {
     document.getElementById("overSound").currentTime = 0;
 		document.getElementById("overSound").play();
-    if (visited_list[properties.name]) {
-      delete visited_list[properties.name]
+    if (visited_list[properties.NAME]) {
+      delete visited_list[properties.NAME]
       // make it reactive
       visited_list = visited_list;
       count--;
     }
     else {
-      visited_list[properties.name] = 1;
+      visited_list[properties.NAME] = 1;
       // make it reactive
       visited_list = visited_list;
       count++;
     }
-    stored_visited_list_spain.set(visited_list);
+    stored_visited_list_europe.set(visited_list);
   }
 
   function showTooltip(name) {
@@ -144,36 +126,26 @@
 
 <div id="wrapper">
   <p>
-    <span style="color: slategray">Ya he visitado</span><br>
+    <span style="color: slategray">I have been to</span><br>
     <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
   </p>
   <div id="map_container">
-    <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+    <svg viewBox="0 0 520 450" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
     <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
       <g>
-        {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
+        {#each mode as feature, i}
           <path
-            id={feature.properties.name}
+            id={feature.properties.NAME}
             d={path(feature)}
             class="area"
-            fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
-            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
+            fill={visited_list[feature.properties.NAME] ? themeColor : "#fff"}
+            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.NAME)}}
             on:mouseleave={() => {tooltipTarget = null}}
             on:focus={() => {hovered = feature}}
             on:click={() => {addToList(feature.properties)}} 
           />
         {/each}
       </g>
-      <path
-        bind:this={canariapath}
-        d={path(f_canarias)}
-        class="area"
-        fill={visited_list["Canarias"] ? themeColor : "#fff"}
-        on:mouseover={() => {hovered = f_canarias, showTooltip(f_canarias.properties.name)}}
-        on:mouseleave={() => {tooltipTarget = null}}
-        on:focus={() => {hovered = f_canarias}}
-        on:click={() => {addToList(f_canarias.properties)}}
-      ></path>
     </svg>
   </div>
 </div>
@@ -185,32 +157,25 @@
 </div>
 {/if}
 
-<!-- Mode Change -->
-<!-- <div>
-  <p>{ hovered?.properties.name ?? '' }</p>
-  <button on:click={() => {mode = "f_ccaa"}}>Comunidades Autónomas</button>
-  <button on:click={() => {mode = "f_pp"}}>Provincias</button>
-</div> -->
-
 <div>
   <fieldset style="text-align: left; background-color: white; margin: 1em;">
-    <!-- <legend><strong>Comunidades Autónomas</strong></legend> -->
+    <!-- <legend><strong>Countries</strong></legend> -->
     {#each mode as feature}
     <div id="checkboxes">
       <label style="cursor: pointer;">
         <input
           type="checkbox"
-          id={feature.properties.name}
-          name={feature.properties.name} 
-          value={feature.properties.name} 
-          bind:checked={visited_list[feature.properties.name]}
+          id={feature.properties.NAME}
+          name={feature.properties.NAME} 
+          value={feature.properties.NAME} 
+          bind:checked={visited_list[feature.properties.NAME]}
           on:click={() => {addToList(feature.properties)}}
         >
-        {feature.properties.name}
+        {feature.properties.NAME}
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list_spain.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
+    <button on:click={() => {stored_visited_list_europe.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
 </div>
 

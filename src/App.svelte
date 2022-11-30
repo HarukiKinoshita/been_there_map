@@ -1,15 +1,28 @@
 <script>
+	import Router, { location, link } from 'svelte-spa-router'
 	import Spain from './Spain.svelte';
+	import Europe from './Europe.svelte'
+
+	const routes = {
+    '/': Spain,
+    '/spain': Spain,
+		'/europe': Europe,
+    '*': Spain
+  };
 </script>
 
 <header>
-	Visited Communities Map
+	{ $location.substr(1) }
 </header>
 <main>
-	<Spain />
+  <Router routes={routes}></Router>
 </main>
 <footer>
-	&copy; Haruki Kinoshita
+	<div class="">
+		<a href="/#/europe">Europe</a>
+		<a href="/#/spain">Spain</a>
+	</div>
+	<p>&copy; Haruki Kinoshita</p>
 </footer>
 
 <style>
