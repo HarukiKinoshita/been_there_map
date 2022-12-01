@@ -117,7 +117,7 @@
 	}
   #checkboxes {
     display: inline-block;
-    margin: 0.5rem 1.5rem 0 0;
+    margin: 0.5rem 1rem 0 0;
   }
   #exported_image {
     width: 80vw;

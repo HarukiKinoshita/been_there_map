@@ -27,7 +27,7 @@
 		<a href="/#/europe">Europe</a>
 		<a href="/#/spain">Spain</a>
 		<a href="/#/france">France</a>
-		<a href="/#/france">Germany</a>
+		<a href="/#/germany">Germany</a>
 	</div>
 	<p>&copy; Haruki Kinoshita</p>
 </footer>
