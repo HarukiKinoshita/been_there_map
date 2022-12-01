@@ -60,7 +60,7 @@
     select(canariapath)
       .attr("transform", "translate(200, 20)");
 
-      node = document.getElementById('wrapper');
+    node = document.getElementById('wrapper');
   });
 
   function addToList(properties) {
@@ -91,7 +91,7 @@
     htmlToImage.toPng(node)
     .then(function (dataUrl) {
       var link = document.createElement('a');
-      link.download = `visited-communities-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
+      link.download = `been-there-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
       link.href = dataUrl;
       link.click();
     })

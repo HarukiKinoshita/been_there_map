@@ -14,7 +14,7 @@
 
 <header>
 	Been There Map
-</header>z
+</header>
 <main>
   <Router routes={routes}></Router>
 </main>

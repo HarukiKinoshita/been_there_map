@@ -1,4 +1,3 @@
-
 <script>
   import * as d3_composite from "d3-composite-projections";
   import { geoPath, geoConicConformal } from "d3-geo";
@@ -42,7 +41,8 @@
     ).then(d => d.json())
     
     f_nations = feature(response, response.objects.europe).features.filter(el => el.id !== "IL");;
-    console.log(f_nations);
+
+    node = document.getElementById('wrapper');
   });
 
   function addToList(properties) {
@@ -73,7 +73,7 @@
     htmlToImage.toPng(node)
     .then(function (dataUrl) {
       var link = document.createElement('a');
-      link.download = `visited-communities-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
+      link.download = `been-there-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
       link.href = dataUrl;
       link.click();
     })
