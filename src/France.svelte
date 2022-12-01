@@ -124,7 +124,7 @@
 
 <div id="wrapper">
   <p>
-    <span style="color: slategray">Ya he visitado</span><br>
+    <span style="color: slategray">J'ai visité</span><br>
     <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
   </p>
   <div id="map_container">
@@ -164,10 +164,10 @@
 
 <div>
   <fieldset style="text-align: left; background-color: white; margin: 1em;">
-    <legend><strong>Comunidades Autónomas</strong></legend>
+    <!-- <legend><strong>Département</strong></legend> -->
     {#each mode as feature}
     <div id="checkboxes">
-      <label style="cursor: pointer;">
+      <label style="cursor: pointer font-size: 0.75rem;">
         <input
           type="checkbox"
           id={feature.properties.NAME_2}
@@ -180,13 +180,13 @@
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list_france.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
+  <button on:click={() => {stored_visited_list_france.set(null), visited_list = {}, count = 0}} class="button">Réinitialiser</button>
 </div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">
-    Exportar Mapa
+    Exporter Carte
   </button>
 </div>
 

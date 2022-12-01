@@ -197,7 +197,7 @@
     <!-- <legend><strong>Comunidades Autónomas</strong></legend> -->
     {#each mode as feature}
     <div id="checkboxes">
-      <label style="cursor: pointer;">
+      <label style="cursor: pointer; font-size: 0.75rem;">
         <input
           type="checkbox"
           id={feature.properties.name}
@@ -210,8 +210,8 @@
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list_spain.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
+  <button on:click={() => {stored_visited_list_spain.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
 </div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">

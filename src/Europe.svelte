@@ -162,7 +162,7 @@
     <!-- <legend><strong>Countries</strong></legend> -->
     {#each mode as feature}
     <div id="checkboxes">
-      <label style="cursor: pointer;">
+      <label style="cursor: pointer; font-size: 0.75rem;">
         <input
           type="checkbox"
           id={feature.properties.NAME}
@@ -175,13 +175,13 @@
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list_europe.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
+  <button on:click={() => {stored_visited_list_europe.set(null), visited_list = {}, count = 0}} class="button">Reset</button>
 </div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">
-    Exportar Mapa
+    Export Map
   </button>
 </div>
 
