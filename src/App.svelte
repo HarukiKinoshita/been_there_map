@@ -2,6 +2,7 @@
 	import Router, { location, link } from 'svelte-spa-router'
 	import Spain from './Spain.svelte';
 	import France from './France.svelte';
+	import Germany from './Germany.svelte';
 	import Europe from './Europe.svelte';
 	import Home from './Home.svelte';
 
@@ -9,6 +10,7 @@
     '/': Home,
     '/spain': Spain,
 		'/france': France,
+		'/germany': Germany,
 		'/europe': Europe,
     '*': Home
   };
@@ -25,6 +27,7 @@
 		<a href="/#/europe">Europe</a>
 		<a href="/#/spain">Spain</a>
 		<a href="/#/france">France</a>
+		<a href="/#/france">Germany</a>
 	</div>
 	<p>&copy; Haruki Kinoshita</p>
 </footer>

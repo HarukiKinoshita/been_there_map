@@ -5,6 +5,7 @@
     <a href="/#/europe">🇪🇺 Europe</a>
 		<a href="/#/spain">🇪🇸 Spain</a>
 		<a href="/#/france">🇫🇷 France</a>
+		<a href="/#/germany">🇩🇪 Germany</a>
   </div>
 </div>
 
