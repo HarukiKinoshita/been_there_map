@@ -8,6 +8,7 @@
 		<a href="/#/spain">🇪🇸 Spain</a>
 		<a href="/#/france">🇫🇷 France</a>
 		<a href="/#/germany">🇩🇪 Germany</a>
+		<a href="/#/uk">🇬🇧 United Kingdom</a>
   </div>
   <div id="about">
     <p>

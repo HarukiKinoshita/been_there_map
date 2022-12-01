@@ -3,6 +3,7 @@
 	import Spain from './Spain.svelte';
 	import France from './France.svelte';
 	import Germany from './Germany.svelte';
+	import UnitedKingdom from './UnitedKingdom.svelte';
 	import Europe from './Europe.svelte';
 	import Home from './Home.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
@@ -12,6 +13,7 @@
     '/spain': Spain,
 		'/france': France,
 		'/germany': Germany,
+		'/uk': UnitedKingdom,
 		'/europe': Europe,
     '*': Home
   };
@@ -29,6 +31,7 @@
 		<a href="/#/spain">Spain</a>
 		<a href="/#/france">France</a>
 		<a href="/#/germany">Germany</a>
+		<a href="/#/uk">United Kingdom</a>
 	</div>
 	<p>&copy; Haruki Kinoshita</p>
 </footer>
