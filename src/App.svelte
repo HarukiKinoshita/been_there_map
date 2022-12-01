@@ -1,20 +1,22 @@
 <script>
 	import Router, { location, link } from 'svelte-spa-router'
+	import Home from './Home.svelte';
+	import Europe from './Europe.svelte';
 	import Spain from './Spain.svelte';
 	import France from './France.svelte';
 	import Germany from './Germany.svelte';
 	import UnitedKingdom from './UnitedKingdom.svelte';
-	import Europe from './Europe.svelte';
-	import Home from './Home.svelte';
+	import UnitedStates from './UnitedStates.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 
 	const routes = {
     '/': Home,
-    '/spain': Spain,
+		'/europe': Europe,
+		'/spain': Spain,
 		'/france': France,
 		'/germany': Germany,
 		'/uk': UnitedKingdom,
-		'/europe': Europe,
+		'/us': UnitedStates,
     '*': Home
   };
 </script>
@@ -26,12 +28,10 @@
   <Router routes={routes}></Router>
 </main>
 <footer>
-	<div class="">
-		<a href="/#/europe">Europe</a>
-		<a href="/#/spain">Spain</a>
-		<a href="/#/france">France</a>
-		<a href="/#/germany">Germany</a>
-		<a href="/#/uk">United Kingdom</a>
+	<div>
+		{#each Object.entries(routes) as [title, paragraph]}
+			<a href="./#{title}">{paragraph.name}</a>
+		{/each}
 	</div>
 	<p>&copy; Haruki Kinoshita</p>
 </footer>
@@ -51,6 +51,9 @@
 		color: slategray;
 		text-align: center;
 		padding: 5vh 0;
+	}
+	footer a {
+		padding-right: 10px;
 	}
 </style>
 
