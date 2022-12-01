@@ -75,7 +75,7 @@
     htmlToImage.toPng(node)
     .then(function (dataUrl) {
       var link = document.createElement('a');
-      link.download = `been-there-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
+      link.download = `been-there-map_${new Date().toLocaleDateString('es-ES')}`;
       link.href = dataUrl;
       link.click();
     })
