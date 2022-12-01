@@ -1,5 +1,4 @@
 <script>
-  import * as d3_composite from "d3-composite-projections";
   import { geoPath, geoAlbers } from "d3-geo";
   import { select } from 'd3-selection';
   import { getContext, onMount } from "svelte";
@@ -20,9 +19,9 @@
 
   $: themeColor = "#ff3e00";
 
-  let f_nations = [];
+  let f_states = [];
   // let f_regions = [];
-  $: mode = f_nations;
+  $: mode = f_states;
 
   let hovered;
   let visited_list = get(stored_visited_list_germany) ? get(stored_visited_list_germany) : {};
@@ -41,7 +40,7 @@
     //   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json"
     // ).then(d => d.json())
     
-    f_nations = feature(response1, response1.objects.states).features;
+    f_states = feature(response1, response1.objects.states).features;
     // f_regions = feature(response2, response2.objects.DEU_adm2).features;
 
     node = document.getElementById('wrapper');
@@ -131,7 +130,6 @@
   </p>
   <div id="map_container">
     <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
-    <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
       <g>
         {#each mode as feature, i}
           <path
