@@ -54,6 +54,7 @@
 	}
 	footer a {
 		padding-right: 10px;
+		display: inline-block;
 	}
 </style>
 
