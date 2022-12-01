@@ -126,7 +126,7 @@
 
 <div id="wrapper">
   <p>
-    <span style="color: slategray">I have been to</span><br>
+    <span style="color: slategray">I have visited</span><br>
     <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
   </p>
   <div id="map_container">

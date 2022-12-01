@@ -1,7 +1,7 @@
 
 <script>
   import * as d3_composite from "d3-composite-projections";
-  import { geoAlbers, geoNaturalEarth1, geoPath } from "d3-geo";
+  import { geoPath } from "d3-geo";
   import { select } from 'd3-selection';
   import { getContext, onMount } from "svelte";
   import { feature } from "topojson";
@@ -10,23 +10,19 @@
   import { toPng } from 'html-to-image';
 
   import { get } from 'svelte/store'
-  import { stored_visited_list } from './stores'
+  import { stored_visited_list_france } from './stores'
 
-  const projection = d3_composite.geoConicConformalSpain().translate([150,250]);
+  const projection = d3_composite.geoConicConformalFrance().translate([245,260]);
   const path = geoPath().projection(projection);
 
   $: themeColor = "#ff3e00";
 
   let f_ccaa = [];
-  let f_ccaa_original = [];
-  let f_pp = [];
-  let f_canarias = [];
-  let canariapath;
   $: mode = f_ccaa;
 
   let hovered;
-  let visited_list = get(stored_visited_list) ? get(stored_visited_list) : {};
-  let count = get(stored_visited_list) ? Object.keys(get(stored_visited_list)).length : 0;
+  let visited_list = get(stored_visited_list_france) ? get(stored_visited_list_france) : {};
+  let count = get(stored_visited_list_france) ? Object.keys(get(stored_visited_list_france)).length : 0;
 
   let mousePosition = { x: 0, y: 0 }; 
   let tooltipTarget = null;
@@ -35,50 +31,34 @@
 
   onMount(async () => {
     const response = await fetch(
-      "https://unpkg.com/es-atlas/es/provinces.json"
+      "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/france/fr-departments.json"
     ).then(d => d.json())
+
+    console.log(response.objects.FRA_adm2)
     
-    f_ccaa_original = feature(response, response.objects.autonomous_regions);
-    f_ccaa = {
-      ...f_ccaa_original,
-      features: f_ccaa_original.features.filter(
-        // Excluir Ceuta y Melilla
-        el => !el.properties.name.includes("Ciudad Autónoma de")
-      )
-    }.features;
-    f_canarias = {
-      ...f_ccaa_original,
-      features: f_ccaa_original.features.find(
-        // Excluir Canarias
-        el => el.properties.name.includes("Canarias")
-      )
-    }.features;
-    f_pp = feature(response, response.objects.provinces).features;
+    f_ccaa = feature(response, response.objects.FRA_adm2).features;
 
-    // Canarias
-    console.log(canariapath);
-    select(canariapath)
-      .attr("transform", "translate(200, 20)");
+    console.log(f_ccaa)
 
-      node = document.getElementById('wrapper');
+    node = document.getElementById('wrapper');
   });
 
   function addToList(properties) {
     document.getElementById("overSound").currentTime = 0;
 		document.getElementById("overSound").play();
-    if (visited_list[properties.name]) {
-      delete visited_list[properties.name]
+    if (visited_list[properties.NAME_2]) {
+      delete visited_list[properties.NAME_2]
       // make it reactive
       visited_list = visited_list;
       count--;
     }
     else {
-      visited_list[properties.name] = 1;
+      visited_list[properties.NAME_2] = 1;
       // make it reactive
       visited_list = visited_list;
       count++;
     }
-    stored_visited_list.set(visited_list);
+    stored_visited_list_france.set(visited_list);
   }
 
   function showTooltip(name) {
@@ -91,7 +71,7 @@
     htmlToImage.toPng(node)
     .then(function (dataUrl) {
       var link = document.createElement('a');
-      link.download = `visited-communities-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
+      link.download = `been-there-map_${new Date().toLocaleDateString('es-ES')}.jpg`;
       link.href = dataUrl;
       link.click();
     })
@@ -151,29 +131,19 @@
     <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
     <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
       <g>
-        {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
+        {#each mode as feature, i}
           <path
-            id={feature.properties.name}
+            id={feature.properties.NAME_2}
             d={path(feature)}
             class="area"
-            fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
-            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
+            fill={visited_list[feature.properties.NAME_2] ? themeColor : "#fff"}
+            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.NAME_2)}}
             on:mouseleave={() => {tooltipTarget = null}}
             on:focus={() => {hovered = feature}}
             on:click={() => {addToList(feature.properties)}} 
           />
         {/each}
       </g>
-      <path
-        bind:this={canariapath}
-        d={path(f_canarias)}
-        class="area"
-        fill={visited_list["Canarias"] ? themeColor : "#fff"}
-        on:mouseover={() => {hovered = f_canarias, showTooltip(f_canarias.properties.name)}}
-        on:mouseleave={() => {tooltipTarget = null}}
-        on:focus={() => {hovered = f_canarias}}
-        on:click={() => {addToList(f_canarias.properties)}}
-      ></path>
     </svg>
   </div>
 </div>
@@ -187,7 +157,7 @@
 
 <!-- Mode Change -->
 <!-- <div>
-  <p>{ hovered?.properties.name ?? '' }</p>
+  <p>{ hovered?.properties.NAME_2 ?? '' }</p>
   <button on:click={() => {mode = "f_ccaa"}}>Comunidades Autónomas</button>
   <button on:click={() => {mode = "f_pp"}}>Provincias</button>
 </div> -->
@@ -200,17 +170,17 @@
       <label style="cursor: pointer;">
         <input
           type="checkbox"
-          id={feature.properties.name}
-          name={feature.properties.name} 
-          value={feature.properties.name} 
-          bind:checked={visited_list[feature.properties.name]}
+          id={feature.properties.NAME_2}
+          name={feature.properties.NAME_2} 
+          value={feature.properties.NAME_2} 
+          bind:checked={visited_list[feature.properties.NAME_2]}
           on:click={() => {addToList(feature.properties)}}
         >
-        {feature.properties.name}
+        {feature.properties.NAME_2}
       </label>
     </div>
     {/each}
-    <button on:click={() => {stored_visited_list.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
+    <button on:click={() => {stored_visited_list_france.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
   </fieldset>
 </div>
 
