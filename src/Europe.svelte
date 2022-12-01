@@ -46,8 +46,6 @@
   });
 
   function addToList(properties) {
-    document.getElementById("overSound").currentTime = 0;
-		document.getElementById("overSound").play();
     if (visited_list[properties.NAME]) {
       delete visited_list[properties.NAME]
       // make it reactive
@@ -184,7 +182,3 @@
     Export Map
   </button>
 </div>
-
-<audio id="overSound" preload="auto">
-	<source src="./audio/kettei44.mp3" type="audio/mp3">
-</audio>
