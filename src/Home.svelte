@@ -4,11 +4,12 @@
   <h1 class="headline">Been There Map</h1>
   <div class="menu">
     <p>Select the map you create and get started!</p>
-    <a class="button" href="/#/europe">🇪🇺 Europe</a>
+    <a href="/#/europe">🇪🇺 Europe</a>
 		<a href="/#/spain">🇪🇸 Spain</a>
 		<a href="/#/france">🇫🇷 France</a>
 		<a href="/#/germany">🇩🇪 Germany</a>
 		<a href="/#/uk">🇬🇧 United Kingdom</a>
+		<a href="/#/us">🇬🇧 United States</a>
   </div>
   <div id="about">
     <p>
@@ -43,7 +44,9 @@
     max-width: 840px;
   }
   .menu a {
+    display: inline-block;
     font-size: 1.5em;
-    padding: 0 1vw;
+    margin: .75em .5em 0 .5em;
+    white-space: nowrap;
   }
 </style>
