@@ -21,6 +21,7 @@
   $: themeColor = "#ff3e00";
 
   let f_nations = [];
+  // let f_regions = [];
   $: mode = f_nations;
 
   let hovered;
@@ -33,12 +34,15 @@
   let node;
 
   onMount(async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json"
+    const response1 = await fetch(
+      "https://raw.githubusercontent.com/AliceWi/TopoJSON-Germany/master/germany.json"
     ).then(d => d.json())
+    // const response2 = await fetch(
+    //   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json"
+    // ).then(d => d.json())
     
-    console.log(response)
-    f_nations = feature(response, response.objects.DEU_adm2).features;
+    f_nations = feature(response1, response1.objects.states).features;
+    // f_regions = feature(response2, response2.objects.DEU_adm2).features;
 
     node = document.getElementById('wrapper');
   });
@@ -46,14 +50,14 @@
   function addToList(properties) {
     document.getElementById("overSound").currentTime = 0;
 		document.getElementById("overSound").play();
-    if (visited_list[properties.NAME_2]) {
-      delete visited_list[properties.NAME_2]
+    if (visited_list[properties.name]) {
+      delete visited_list[properties.name]
       // make it reactive
       visited_list = visited_list;
       count--;
     }
     else {
-      visited_list[properties.NAME_2] = 1;
+      visited_list[properties.name] = 1;
       // make it reactive
       visited_list = visited_list;
       count++;
@@ -133,11 +137,11 @@
       <g>
         {#each mode as feature, i}
           <path
-            id={feature.properties.NAME_2}
+            id={feature.properties.name}
             d={path(feature)}
             class="area"
-            fill={visited_list[feature.properties.NAME_2] ? themeColor : "#fff"}
-            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.NAME_2)}}
+            fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
+            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
             on:mouseleave={() => {tooltipTarget = null}}
             on:focus={() => {hovered = feature}}
             on:click={() => {addToList(feature.properties)}} 
@@ -163,13 +167,13 @@
       <label style="cursor: pointer; font-size: 0.75rem;">
         <input
           type="checkbox"
-          id={feature.properties.NAME_2}
-          name={feature.properties.NAME_2} 
-          value={feature.properties.NAME_2} 
-          bind:checked={visited_list[feature.properties.NAME_2]}
+          id={feature.properties.name}
+          name={feature.properties.name} 
+          value={feature.properties.name} 
+          bind:checked={visited_list[feature.properties.name]}
           on:click={() => {addToList(feature.properties)}}
         >
-        {feature.properties.NAME_2}
+        {feature.properties.name}
       </label>
     </div>
     {/each}
