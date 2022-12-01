@@ -5,6 +5,7 @@
 	import Germany from './Germany.svelte';
 	import Europe from './Europe.svelte';
 	import Home from './Home.svelte';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	const routes = {
     '/': Home,
@@ -49,3 +50,31 @@
 		padding: 5vh 0;
 	}
 </style>
+
+<MetaTags
+  title="Been There Map"
+  titleTemplate="%s | Been There Map"
+  description="Where have you been? Create your own Been There map. "
+  canonical="https://been-there-map.h13a.dev/"
+  openGraph={{
+    url: 'https://been-there-map.h13a.dev/',
+    title: 'Been There Map',
+    description: 'Where have you been? Create your own Been There map. ',
+    images: [
+      {
+        url: 'https://been-there-map.h13a.dev/been-there-map-logo.png',
+        width: 512,
+        height: 512,
+        alt: 'Been There Map'
+      },
+    ],
+    site_name: 'Been There Map'
+  }}
+  twitter={{
+    cardType: 'summary',
+    title: 'Been There Map',
+    description: 'Where have you been? Create your own Been There map. ',
+    image: 'https://been-there-map.h13a.dev/been-there-map-logo.png',
+    imageAlt: 'Been There Map'
+  }}
+/>
