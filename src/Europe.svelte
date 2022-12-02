@@ -43,7 +43,7 @@
     
     f_nations = feature(response, response.objects.europe).features.filter(el => el.id !== "IL");;
 
-    node = document.getElementById('wrapper');
+    node = document.getElementById('map_container');
   });
 
   function addToList(properties) {
