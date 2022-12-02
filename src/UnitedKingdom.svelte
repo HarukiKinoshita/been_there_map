@@ -40,7 +40,7 @@
     f_counties = feature(response, response.objects.GBR_adm2).features;
 
     console.log(response.objects.GBR_adm2.geometries.filter(el => el.NAME_1 !== "England" || el.NAME_1 !== "Scotland"))
-    node = document.getElementById('image_export_wrapper');
+    node = document.getElementById('map_container');
   });
 
   function addToList(properties) {
@@ -110,12 +110,11 @@
     padding: 1em;
     background-color: hsl(0, 0%, 95%);
   }
-  #image_export_wrapper {
-    background-color: hsl(0, 0%, 95%);
-  }
   #map_container {
     margin: auto;
     max-width: 640px;
+    padding: 2em;
+    background-color: hsl(0, 0%, 95%) !important;
   }
   .card {
     padding: 3px 5px;
@@ -141,12 +140,12 @@
 
 <div id="wrapper">
   <Grid container>
-    <Grid md={12} lg={8} id="image_export_wrapper">
-      <p>
-        <span style="color: slategray">I have visited</span><br>
-        <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
-      </p>
+    <Grid md={12} lg={8}>
       <div id="map_container">
+        <p>
+          <span style="color: slategray">I have visited</span><br>
+          <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
+        </p>
         <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
           <g>
             {#each mode as feature, i}
