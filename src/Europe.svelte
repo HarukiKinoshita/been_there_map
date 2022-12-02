@@ -136,10 +136,12 @@
           <span style="color: slategray">I have visited</span><br>
           <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
         </p>    
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
         <svg viewBox="0 0 520 450" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}} id="svg_box">
         <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
           <g>
             {#each mode as feature, i}
+              <!-- svelte-ignore a11y-click-events-have-key-events -->
               <path
                 id={feature.properties.NAME}
                 d={path(feature)}
