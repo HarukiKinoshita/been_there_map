@@ -1,37 +1,55 @@
+<script>
+  import Grid from "svelte-grid-responsive";
+</script>
+
 <div id="wrapper">
   <h1 class="headline">Been There Map</h1>
   <p>Select the map you create and get started!</p>
   <div class="menu">
-    <a href="/#/europe">
-      <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
-      <br>
-      Europe
-    </a>
-		<a href="/#/spain">
-      <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="36" alt="Spain">
-      <br>
-      Spain
-    </a>
-		<a href="/#/france">
-      <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="36" alt="France">
-      <br>
-      France
-    </a>
-		<a href="/#/germany">
-      <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
-      <br>
-      Germany
-    </a>
-		<a href="/#/uk">
-      <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="36" alt="United Kingdom">
-      <br>
-      United Kingdom
-    </a>
-		<a href="/#/us">
-      <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="36" alt="United States">
-      <br>
-      United States
-    </a>
+    <Grid container gutter={36}>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/europe">
+          <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
+          <br>
+          Europe
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/spain">
+          <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="36" alt="Spain">
+          <br>
+          Spain
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/france">
+          <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="36" alt="France">
+          <br>
+          France
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/germany">
+          <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
+          <br>
+          Germany
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/uk">
+          <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="36" alt="United Kingdom">
+          <br>
+          United Kingdom
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/us">
+          <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="36" alt="United States">
+          <br>
+          United States
+        </a>
+      </Grid>
+    </Grid>	
   </div>
   <div id="about">
     <p>
@@ -61,7 +79,7 @@
 	}
   .menu {
     background-color: #ffffff;
-    margin: 1em 1em 2em 1em;
+    padding: 2em;
     border-radius: 20px;
     margin: auto;
     max-width: 840px;
@@ -70,8 +88,6 @@
     justify-content: space-between;
   }
   .menu a {
-    width: 30%;
-    min-width: 200px;
     font-size: 1.5em;
     padding: 1em 0;
     margin: auto;
