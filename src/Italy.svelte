@@ -128,7 +128,7 @@
     <Grid md={12} lg={8}>
       <div id="map_container">
         <p>
-          <span style="color: slategray">Ich habe besucht</span><br>
+          <span style="color: slategray">Ho già visitato</span><br>
           <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
         </p>
         <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
@@ -168,7 +168,7 @@
         </div>
         {/each}
       </fieldset>
-      <button on:click={() => {stored_visited_list_italy.set(null), visited_list = {}, count = 0}} class="button">Zurücksetzen</button>
+      <button on:click={() => {stored_visited_list_italy.set(null), visited_list = {}, count = 0}} class="button">Ripristinare</button>
     </Grid>
   </Grid>
 </div>
@@ -183,6 +183,6 @@
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">
-    Exportieren Karte
+    Esportare Mappe
   </button>
 </div>
