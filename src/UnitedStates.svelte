@@ -5,6 +5,7 @@
   import { feature } from "topojson";
 
   import * as htmlToImage from 'html-to-image';
+  import Grid from "svelte-grid-responsive";
 
   import { get } from 'svelte/store'
   import { stored_visited_list_us } from './stores'
@@ -34,7 +35,7 @@
     
     f_states = feature(response1, response1.objects.states).features;
 
-    node = document.getElementById('wrapper');
+    node = document.getElementById('image_export_wrapper');
   });
 
   function addToList(properties) {
@@ -88,6 +89,9 @@
     padding: 1em;
     background-color: hsl(0, 0%, 95%);
   }
+  #image_export_wrapper {
+    background-color: hsl(0, 0%, 95%);
+  }
   #map_container {
     margin: auto;
     max-width: 640px;
@@ -115,28 +119,53 @@
 </style>
 
 <div id="wrapper">
-  <p>
-    <span style="color: slategray">I have visited</span><br>
-    <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
-  </p>
-  <div id="map_container">
-    <svg viewBox="0 0 800 490" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
-      <g>
-        {#each mode as feature, i}
-          <path
-            id={feature.properties.name}
-            d={path(feature)}
-            class="area"
-            fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
-            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
-            on:mouseleave={() => {tooltipTarget = null}}
-            on:focus={() => {hovered = feature}}
-            on:click={() => {addToList(feature.properties)}} 
-          />
+  <Grid container>
+    <Grid md={12} lg={8} id="image_export_wrapper">
+      <p>
+        <span style="color: slategray">I have visited</span><br>
+        <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
+      </p>
+      <div id="map_container">
+        <svg viewBox="0 0 800 490" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+          <g>
+            {#each mode as feature, i}
+              <path
+                id={feature.properties.name}
+                d={path(feature)}
+                class="area"
+                fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
+                on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
+                on:mouseleave={() => {tooltipTarget = null}}
+                on:focus={() => {hovered = feature}}
+                on:click={() => {addToList(feature.properties)}} 
+              />
+            {/each}
+          </g>
+        </svg>
+      </div>
+    </Grid>
+    <Grid md={12} lg={4}>
+        <fieldset style="text-align: left; background-color: white; margin: 1em;">
+        <!-- <legend><strong>Countries</strong></legend> -->
+        {#each mode as feature}
+        <div id="checkboxes">
+          <label style="cursor: pointer; font-size: 0.75rem;">
+            <input
+              type="checkbox"
+              id={feature.properties.name}
+              name={feature.properties.name} 
+              value={feature.properties.name} 
+              bind:checked={visited_list[feature.properties.name]}
+              on:click={() => {addToList(feature.properties)}}
+            >
+            {feature.properties.name}
+          </label>
+        </div>
         {/each}
-      </g>
-    </svg>
-  </div>
+      </fieldset>
+      <button on:click={() => {stored_visited_list_us.set(null), visited_list = {}, count = 0}} class="button">Reset</button>
+    </Grid>
+  </Grid>
 </div>
 
 <!-- Tooltip -->
@@ -146,27 +175,6 @@
 </div>
 {/if}
 
-<div>
-  <fieldset style="text-align: left; background-color: white; margin: 1em;">
-    <!-- <legend><strong>Countries</strong></legend> -->
-    {#each mode as feature}
-    <div id="checkboxes">
-      <label style="cursor: pointer; font-size: 0.75rem;">
-        <input
-          type="checkbox"
-          id={feature.properties.name}
-          name={feature.properties.name} 
-          value={feature.properties.name} 
-          bind:checked={visited_list[feature.properties.name]}
-          on:click={() => {addToList(feature.properties)}}
-        >
-        {feature.properties.name}
-      </label>
-    </div>
-    {/each}
-  </fieldset>
-  <button on:click={() => {stored_visited_list_us.set(null), visited_list = {}, count = 0}} class="button">Reset</button>
-</div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">
