@@ -117,9 +117,12 @@
   }
   #map_container {
     margin: auto;
-    max-width: 640px;
     padding: 2em;
     background-color: hsl(0, 0%, 95%) !important;
+  }
+  #svg_box {
+    max-width: 640px;
+    margin: auto;
   }
   .card {
     padding: 3px 5px;
