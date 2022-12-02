@@ -99,6 +99,10 @@
     padding: 2em;
     background-color: hsl(0, 0%, 95%) !important;
   }
+  #svg_box {
+    max-width: 640px;
+    margin: auto;
+  }
   .card {
     padding: 3px 5px;
     border-radius: 4px;
@@ -129,7 +133,7 @@
           <span style="color: slategray">J'ai visité</span><br>
           <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
         </p>
-        <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+        <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}} id="svg_box">
         <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
           <g>
             {#each mode as feature, i}

@@ -101,7 +101,11 @@
   #map_container {
     margin: auto;
     padding: 2em;
-    background-color: hsl(0, 0%, 95%) !important;
+    background-color: hsl(0,z 0%, 95%) !important;
+  }
+  #svg_box {
+    max-width: 640px;
+    margin: auto;
   }
   .card {
     padding: 3px 5px;
@@ -133,7 +137,7 @@
           <span style="color: slategray">Ich habe besucht</span><br>
           <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
         </p>
-        <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+        <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}} id="svg_box">
           <g>
             {#each mode as feature, i}
               <path
