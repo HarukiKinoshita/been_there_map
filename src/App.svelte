@@ -28,11 +28,11 @@
   <Router routes={routes}></Router>
 </main>
 <footer>
-	<div>
+	<!-- <div>
 		{#each Object.entries(routes) as [title, paragraph]}
 			<a href="./#{title}">{paragraph.name}</a>
 		{/each}
-	</div>
+	</div> -->
 	<p>&copy; Haruki Kinoshita</p>
 </footer>
 
