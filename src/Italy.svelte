@@ -97,7 +97,6 @@
   }
   #map_container {
     margin: auto;
-    max-width: 640px;
     padding: 2em;
     background-color: hsl(0, 0%, 95%) !important;
   }
