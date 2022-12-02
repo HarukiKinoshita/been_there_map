@@ -5,6 +5,7 @@
 	import Spain from './Spain.svelte';
 	import France from './France.svelte';
 	import Germany from './Germany.svelte';
+	import Italy from './Italy.svelte';
 	import UnitedKingdom from './UnitedKingdom.svelte';
 	import UnitedStates from './UnitedStates.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
@@ -15,6 +16,7 @@
 		'/spain': Spain,
 		'/france': France,
 		'/germany': Germany,
+		'/italy': Italy,
 		'/uk': UnitedKingdom,
 		'/us': UnitedStates,
     '*': Home
@@ -33,6 +35,7 @@
 			<a href="./#{title}">{paragraph.name}</a>
 		{/each}
 	</div> -->
+	<a href="/">Home</a>
 	<p>&copy; Haruki Kinoshita</p>
 </footer>
 

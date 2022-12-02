@@ -9,6 +9,9 @@ export const stored_visited_list_france = writable('stored_visited_list_france',
 export const stored_visited_list_germany = writable('stored_visited_list_germany', {
 })
 
+export const stored_visited_list_italy = writable('stored_visited_list_italy', {
+})
+
 export const stored_visited_list_uk = writable('stored_visited_list_uk', {
 })
 

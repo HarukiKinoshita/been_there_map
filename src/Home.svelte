@@ -29,6 +29,13 @@
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
+        <a href="/#/italy">
+          <img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="36" alt="Italy">
+          <br>
+          Italy
+        </a>
+      </Grid>
+      <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/germany">
           <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
           <br>
