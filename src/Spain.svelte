@@ -61,7 +61,7 @@
     select(canariapath)
       .attr("transform", "translate(200, 20)");
 
-    node = document.getElementById('wrapper');
+    node = document.getElementById('map_container');
   });
 
   function addToList(properties) {
@@ -152,10 +152,12 @@
           <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
         </p>
         <div id="map_container">
+          <!-- svelte-ignore a11y-click-events-have-key-events -->
           <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
           <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
             <g>
               {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
+                <!-- svelte-ignore a11y-click-events-have-key-events -->
                 <path
                   id={feature.properties.name}
                   d={path(feature)}
@@ -168,6 +170,7 @@
                 />
               {/each}
             </g>
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             <path
               bind:this={canariapath}
               d={path(f_canarias)}
