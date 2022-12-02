@@ -61,7 +61,7 @@
     select(canariapath)
       .attr("transform", "translate(200, 20)");
 
-    node = document.getElementById('map_container');
+    node = document.getElementById('wrapper');
   });
 
   function addToList(properties) {
@@ -144,64 +144,39 @@
 </style>
 
 <div id="wrapper">
-  <Grid container>
-    <Grid md={12} lg={8} id="image_export_wrapper">
-      <div id="map_container">
-        <p>
-          <span style="color: slategray">Ya he visitado</span><br>
-          <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
-        </p>
-        <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
-        <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
-          <g>
-            {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
-              <path
-                id={feature.properties.name}
-                d={path(feature)}
-                class="area"
-                fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
-                on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
-                on:mouseleave={() => {tooltipTarget = null}}
-                on:focus={() => {hovered = feature}}
-                on:click={() => {addToList(feature.properties)}} 
-              />
-            {/each}
-          </g>
+  <p>
+    <span style="color: slategray">Ya he visitado</span><br>
+    <span class="headline">{ count }</span><span style="color: slategray; margin-left: 4px; ">/ { mode.length }</span><br>
+  </p>
+  <div id="map_container">
+    <svg viewBox="0 0 490 520" preserveAspectRatio="xMidYMid meet" on:click={() => {tooltipTarget = null}}>
+    <!-- <svg viewBox="0 0 960 500" preserveAspectRatio="xMidYMid meet"> -->
+      <g>
+        {#each mode.filter(el => !el.properties.name.includes("Canarias")) as feature, i}
           <path
-            bind:this={canariapath}
-            d={path(f_canarias)}
+            id={feature.properties.name}
+            d={path(feature)}
             class="area"
-            fill={visited_list["Canarias"] ? themeColor : "#fff"}
-            on:mouseover={() => {hovered = f_canarias, showTooltip(f_canarias.properties.name)}}
+            fill={visited_list[feature.properties.name] ? themeColor : "#fff"}
+            on:mouseover={() => {hovered = feature, showTooltip(feature.properties.name)}}
             on:mouseleave={() => {tooltipTarget = null}}
-            on:focus={() => {hovered = f_canarias}}
-            on:click={() => {addToList(f_canarias.properties)}}
-          ></path>
-        </svg>
-      </div>
-    </Grid>
-    <Grid md={12} lg={4}>
-      <fieldset style="text-align: left; background-color: white; margin: 1em;">
-        <!-- <legend><strong>Comunidades Autónomas</strong></legend> -->
-        {#each mode as feature}
-        <div id="checkboxes">
-          <label style="cursor: pointer; font-size: 0.75rem;">
-            <input
-              type="checkbox"
-              id={feature.properties.name}
-              name={feature.properties.name} 
-              value={feature.properties.name} 
-              bind:checked={visited_list[feature.properties.name]}
-              on:click={() => {addToList(feature.properties)}}
-            >
-            {feature.properties.name}
-          </label>
-        </div>
+            on:focus={() => {hovered = feature}}
+            on:click={() => {addToList(feature.properties)}} 
+          />
         {/each}
-      </fieldset>
-      <button on:click={() => {stored_visited_list_spain.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
-    </Grid>
-  </Grid>
+      </g>
+      <path
+        bind:this={canariapath}
+        d={path(f_canarias)}
+        class="area"
+        fill={visited_list["Canarias"] ? themeColor : "#fff"}
+        on:mouseover={() => {hovered = f_canarias, showTooltip(f_canarias.properties.name)}}
+        on:mouseleave={() => {tooltipTarget = null}}
+        on:focus={() => {hovered = f_canarias}}
+        on:click={() => {addToList(f_canarias.properties)}}
+      ></path>
+    </svg>
+  </div>
 </div>
 
 <!-- Tooltip -->
@@ -218,6 +193,27 @@
   <button on:click={() => {mode = "f_pp"}}>Provincias</button>
 </div> -->
 
+<div>
+  <fieldset style="text-align: left; background-color: white; margin: 1em;">
+    <!-- <legend><strong>Comunidades Autónomas</strong></legend> -->
+    {#each mode as feature}
+    <div id="checkboxes">
+      <label style="cursor: pointer; font-size: 0.75rem;">
+        <input
+          type="checkbox"
+          id={feature.properties.name}
+          name={feature.properties.name} 
+          value={feature.properties.name} 
+          bind:checked={visited_list[feature.properties.name]}
+          on:click={() => {addToList(feature.properties)}}
+        >
+        {feature.properties.name}
+      </label>
+    </div>
+    {/each}
+  </fieldset>
+  <button on:click={() => {stored_visited_list_spain.set(null), visited_list = {}, count = 0}} class="button">Reiniciar</button>
+</div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">

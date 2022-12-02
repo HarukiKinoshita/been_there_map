@@ -168,7 +168,6 @@
         </div>
         {/each}
       </fieldset>
-      <button on:click={() => {stored_visited_list_france.set(null), visited_list = {}, count = 0}} class="button">Réinitialiser</button>
     </Grid>
   </Grid>
 </div>
@@ -187,6 +186,27 @@
   <button on:click={() => {mode = "f_pp"}}>Provincias</button>
 </div> -->
 
+<div>
+  <fieldset style="text-align: left; background-color: white; margin: 1em;">
+    <!-- <legend><strong>Département</strong></legend> -->
+    {#each mode as feature}
+    <div id="checkboxes">
+      <label style="cursor: pointer font-size: 0.75rem;">
+        <input
+          type="checkbox"
+          id={feature.properties.NAME_2}
+          name={feature.properties.NAME_2} 
+          value={feature.properties.NAME_2} 
+          bind:checked={visited_list[feature.properties.NAME_2]}
+          on:click={() => {addToList(feature.properties)}}
+        >
+        {feature.properties.NAME_2}
+      </label>
+    </div>
+    {/each}
+  </fieldset>
+  <button on:click={() => {stored_visited_list_france.set(null), visited_list = {}, count = 0}} class="button">Réinitialiser</button>
+</div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">

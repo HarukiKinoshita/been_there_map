@@ -144,7 +144,7 @@
       </div>
     </Grid>
     <Grid md={12} lg={4}>
-        <fieldset style="text-align: left; background-color: white; margin: 1em;">
+      <fieldset style="text-align: left; background-color: white; margin: 1em;">
         <!-- <legend><strong>Countries</strong></legend> -->
         {#each mode as feature}
         <div id="checkboxes">
@@ -162,7 +162,6 @@
         </div>
         {/each}
       </fieldset>
-      <button on:click={() => {stored_visited_list_us.set(null), visited_list = {}, count = 0}} class="button">Reset</button>
     </Grid>
   </Grid>
 </div>
@@ -174,6 +173,27 @@
 </div>
 {/if}
 
+<div>
+  <fieldset style="text-align: left; background-color: white; margin: 1em;">
+    <!-- <legend><strong>Countries</strong></legend> -->
+    {#each mode as feature}
+    <div id="checkboxes">
+      <label style="cursor: pointer; font-size: 0.75rem;">
+        <input
+          type="checkbox"
+          id={feature.properties.name}
+          name={feature.properties.name} 
+          value={feature.properties.name} 
+          bind:checked={visited_list[feature.properties.name]}
+          on:click={() => {addToList(feature.properties)}}
+        >
+        {feature.properties.name}
+      </label>
+    </div>
+    {/each}
+  </fieldset>
+  <button on:click={() => {stored_visited_list_us.set(null), visited_list = {}, count = 0}} class="button">Reset</button>
+</div>
 
 <div style="position: fixed; right: 24px; bottom: 24px;">
   <button on:click={() => {getImage()}} class="button-orange">
