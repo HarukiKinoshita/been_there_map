@@ -10,6 +10,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_us } from './stores'
 
+  import * as geodata from './topojson/states-10m.json'
+
   const projection = geoAlbersUsa().scale(1000).translate([430, 240])
   const path = geoPath().projection(projection);
 
@@ -29,11 +31,7 @@
   let node;
 
   onMount(async () => {
-    const response1 = await fetch(
-      "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"
-    ).then(d => d.json())
-    
-    f_states = feature(response1, response1.objects.states).features;
+    f_states = feature(geodata, geodata.objects.states).features;
 
     node = document.getElementById('map_container');
   });

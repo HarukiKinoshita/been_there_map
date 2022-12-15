@@ -12,6 +12,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_europe } from './stores'
 
+  import * as geodata from './topojson/europe.json'
+
   const projection = geoBonne()
     .rotate([-20.0, 0.0])
     .center([0.0, 52.0])
@@ -36,12 +38,7 @@
   let node;
 
   onMount(async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/leakyMirror/map-of-europe/27a335110674ae5b01a84d3501b227e661beea2b/TopoJSON/europe.topojson"
-      // Source: https://github.com/leakyMirror/map-of-europe
-    ).then(d => d.json())
-    
-    f_nations = feature(response, response.objects.europe).features.filter(el => el.id !== "IL");;
+    f_nations = feature(geodata, geodata.objects.europe).features.filter(el => el.id !== "IL");;
 
     node = document.getElementById('map_container');
   });

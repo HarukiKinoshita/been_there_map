@@ -10,6 +10,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_germany } from './stores'
 
+  import * as geodata from './topojson/germany.json'
+
   const projection = geoAlbers()
     .rotate([-20.0, 0.0])
     .center([-9.0, 51.5])
@@ -34,15 +36,7 @@
   let node;
 
   onMount(async () => {
-    const response1 = await fetch(
-      "https://raw.githubusercontent.com/AliceWi/TopoJSON-Germany/master/germany.json"
-    ).then(d => d.json())
-    // const response2 = await fetch(
-    //   "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json"
-    // ).then(d => d.json())
-    
-    f_states = feature(response1, response1.objects.states).features;
-    // f_regions = feature(response2, response2.objects.DEU_adm2).features;
+    f_states = feature(geodata, geodata.objects.states).features;
 
     node = document.getElementById('map_container');
   });

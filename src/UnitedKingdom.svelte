@@ -10,6 +10,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_uk } from './stores'
 
+  import * as geodata from './topojson/uk-counties.json'
+
   const projection = geoAlbers()
     .rotate([-17.0, 0.0])
     .center([-20, 55.8])
@@ -33,13 +35,9 @@
   let node;
 
   onMount(async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/united-kingdom/uk-counties.json"
-    ).then(d => d.json())
-    
-    f_counties = feature(response, response.objects.GBR_adm2).features;
+    f_counties = feature(geodata, geodata.objects.GBR_adm2).features;
 
-    console.log(response.objects.GBR_adm2.geometries.filter(el => el.NAME_1 !== "England" || el.NAME_1 !== "Scotland"))
+    console.log(geodata.objects.GBR_adm2.geometries.filter(el => el.NAME_1 !== "England" || el.NAME_1 !== "Scotland"))
     node = document.getElementById('map_container');
   });
 

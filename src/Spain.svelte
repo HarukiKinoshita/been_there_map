@@ -12,6 +12,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_spain } from './stores'
 
+  import * as geodata from './topojson/es_provinces.json'
+
   const projection = d3_composite.geoConicConformalSpain().translate([150,250]);
   const path = geoPath().projection(projection);
 
@@ -33,12 +35,8 @@
 
   let node;
 
-  onMount(async () => {
-    const response = await fetch(
-      "https://unpkg.com/es-atlas/es/provinces.json"
-    ).then(d => d.json())
-    
-    f_ccaa_original = feature(response, response.objects.autonomous_regions);
+  onMount(async () => {    
+    f_ccaa_original = feature(geodata, geodata.objects.autonomous_regions);
     console.log(f_ccaa_original);
     f_ccaa = {
       ...f_ccaa_original,
@@ -54,7 +52,7 @@
         el => el.properties.name.includes("Canarias")
       )
     }.features;
-    f_pp = feature(response, response.objects.provinces).features;
+    f_pp = feature(geodata, geodata.objects.provinces).features;
 
     // Canarias
     console.log(canariapath);

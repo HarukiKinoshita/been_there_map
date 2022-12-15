@@ -12,6 +12,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_france } from './stores'
 
+  import * as geodata from './topojson/fr-departments.json'
+
   const projection = d3_composite.geoConicConformalFrance().translate([245,260]);
   const path = geoPath().projection(projection);
 
@@ -30,16 +32,7 @@
   let node;
 
   onMount(async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/france/fr-departments.json"
-    ).then(d => d.json())
-
-    console.log(response.objects.FRA_adm2)
-    
-    f_ccaa = feature(response, response.objects.FRA_adm2).features;
-
-    console.log(f_ccaa)
-
+    f_ccaa = feature(geodata, geodata.objects.FRA_adm2).features;
     node = document.getElementById('map_container');
   });
 

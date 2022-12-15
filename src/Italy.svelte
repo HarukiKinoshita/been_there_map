@@ -10,6 +10,8 @@
   import { get } from 'svelte/store'
   import { stored_visited_list_italy } from './stores'
 
+  import * as geodata from './topojson/italy-regions.json'  
+
   const projection = geoAlbers()
     .rotate([-20.0, 0.0])
     .center([-7.0, 42.2])
@@ -34,12 +36,7 @@
   let node;
 
   onMount(async () => {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/italy/italy-regions.json"
-    ).then(d => d.json())
-    console.log(response)
-    
-    f_states = feature(response, response.objects.ITA_adm1).features;
+    f_states = feature(geodata, geodata.objects.ITA_adm1).features;
 
     node = document.getElementById('map_container');
   });
