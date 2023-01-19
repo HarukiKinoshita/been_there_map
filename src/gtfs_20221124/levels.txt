@@ -1,6 +1,0 @@
-level_id,level_index,level_name
-0,0,Nivel carretera
--1,-1,Nivel subsuelo
--2,-2,Nivel subsuelo 2
-1,1,Planta 1
-3,3,Planta 3

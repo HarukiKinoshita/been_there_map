@@ -1,2 +1,0 @@
-agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone,agency_fare_url,agency_email
-200,Bizkaibus,https://web.bizkaia.eus/es/web/bizkaibus,Europe/Madrid,es,946125555,https://web.bizkaia.eus/es/web/bizkaibus/tarifas,infobizkaibus@bizkaia.eus

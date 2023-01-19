@@ -1,2 +1,0 @@
-feed_publisher_name,feed_publisher_url,feed_lang,feed_start_date,feed_end_date,feed_version
-Lantik,https://www.lantik.bizkaia.eus/,es,20221122,20230122,20221123
