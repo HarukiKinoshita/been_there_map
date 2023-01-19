@@ -38,7 +38,7 @@
   let node;
 
   onMount(async () => {
-    f_nations = feature(geodata, geodata.objects.europe).features.filter(el => el.id !== "IL");;
+    f_nations = feature(geodata, geodata.objects.europe).features.filter(el => el.id !== "IL");
 
     node = document.getElementById('map_container');
   });
