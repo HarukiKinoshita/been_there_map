@@ -9,11 +9,11 @@
     <Grid container gutter={36}>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/europe">
-          <Grid container>
-            <Grid xs={4}>
+          <Grid container gutter={12}>
+            <Grid xs={3}>
               <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
             </Grid>
-            <Grid xs={8}>
+            <Grid xs={9}>
               Europe
             </Grid>
           </Grid>
@@ -21,44 +21,74 @@
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/spain">
-          <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="36" alt="Spain">
-          <br>
-          Spain
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="36" alt="Spain">
+            </Grid>
+            <Grid xs={9}>
+              Spain
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/france">
-          <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="36" alt="France">
-          <br>
-          France
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="36" alt="France">
+            </Grid>
+            <Grid xs={9}>
+              France
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/italy">
-          <img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="36" alt="Italy">
-          <br>
-          Italy
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="36" alt="Italy">
+            </Grid>
+            <Grid xs={9}>
+              Italy
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/germany">
-          <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
-          <br>
-          Germany
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
+            </Grid>
+            <Grid xs={9}>
+              Germany
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/uk">
-          <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="36" alt="United Kingdom">
-          <br>
-          United Kingdom
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="36" alt="United Kingdom">
+            </Grid>
+            <Grid xs={9}>
+              United Kingdom
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/us">
-          <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="36" alt="United States">
-          <br>
-          United States
+          <Grid container gutter={12}>
+            <Grid xs={3}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="36" alt="United States">
+            </Grid>
+            <Grid xs={9}>
+              United States
+            </Grid>
+          </Grid>
         </a>
       </Grid>
     </Grid>	
@@ -90,7 +120,6 @@
 		font-weight: 100;
 	}
   .menu {
-    background-color: #ffffff;
     padding: 2em;
     border-radius: 20px;
     margin: auto;
