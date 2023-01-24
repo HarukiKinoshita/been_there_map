@@ -22,9 +22,6 @@
   };
 </script>
 
-<header>
-	Been There Map
-</header>
 <main>
   <Router routes={routes}></Router>
 </main>
@@ -39,12 +36,6 @@
 </footer>
 
 <style>
-	header {
-		background-color: slategray;
-		color: white;
-		text-align: center;
-		padding: 10px;
-	}
 	main {
 		text-align: center;
 		margin: 0 auto;

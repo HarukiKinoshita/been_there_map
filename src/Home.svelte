@@ -9,9 +9,14 @@
     <Grid container gutter={36}>
       <Grid xs={12} sm={6} md={4} lg={3}>
         <a href="/#/europe">
-          <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
-          <br>
-          Europe
+          <Grid container>
+            <Grid xs={4}>
+              <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
+            </Grid>
+            <Grid xs={8}>
+              Europe
+            </Grid>
+          </Grid>
         </a>
       </Grid>
       <Grid xs={12} sm={6} md={4} lg={3}>
@@ -81,7 +86,7 @@
   .headline {
 		color: #ff3e00;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 3em;
 		font-weight: 100;
 	}
   .menu {
