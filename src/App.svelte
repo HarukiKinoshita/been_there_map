@@ -8,6 +8,7 @@
 	import Italy from './Italy.svelte';
 	import UnitedKingdom from './UnitedKingdom.svelte';
 	import UnitedStates from './UnitedStates.svelte';
+	import Test from './AirportLocation.svelte';
 
 	const routes = {
     '/': Home,

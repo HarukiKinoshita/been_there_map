@@ -1,0 +1,322 @@
+[
+  {
+    "ICAO": "RJAA",
+    "IATA": "NRT",
+    "name": "NEW TOKYO INTERNATIONAL",
+    "city/town": "TOKYO",
+    "country": "JAPAN",
+    "altitude": 43,
+    "lat": 35.765,
+    "lng": 140.386
+  },
+  {
+    "ICAO": "RJAF",
+    "IATA": "MMJ",
+    "name": "MATSUMOTO",
+    "city/town": "MATSUMOTO",
+    "country": "JAPAN",
+    "altitude": 666,
+    "lat": 36.167,
+    "lng": 137.923
+  },
+  {
+    "ICAO": "RJAH",
+    "IATA": "N/A",
+    "name": "HYAKURI",
+    "city/town": "HYAKURI",
+    "country": "JAPAN",
+    "altitude": 33,
+    "lat": 36.181,
+    "lng": 140.415
+  },
+  {
+    "ICAO": "RJAI",
+    "IATA": "N/A",
+    "name": "N/A",
+    "city/town": "ICHIGAYA",
+    "country": "JAPAN",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "JAPN",
+    "IATA": "N/A",
+    "name": "N/A",
+    "city/town": "UTSUNOMIYA",
+    "country": "JAPAN",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "KABI",
+    "IATA": "ABI",
+    "name": "ABILENE RGNL",
+    "city/town": "ABILENE",
+    "country": "USA",
+    "altitude": 546,
+    "lat": 32.411,
+    "lng": -99.682
+  },
+  {
+    "ICAO": "KABQ",
+    "IATA": "ABQ",
+    "name": "N/A",
+    "city/town": "ALBUQUERQUE",
+    "country": "USA",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "KACK",
+    "IATA": "ACK",
+    "name": "NANTUCKET MEM",
+    "city/town": "NANTUCKET",
+    "country": "USA",
+    "altitude": 15,
+    "lat": 41.253,
+    "lng": -70.06
+  },
+  {
+    "ICAO": "KACT",
+    "IATA": "ACT",
+    "name": "WACO RGNL",
+    "city/town": "WACO",
+    "country": "USA",
+    "altitude": 158,
+    "lat": 31.611,
+    "lng": -97.23
+  },
+  {
+    "ICAO": "KACY",
+    "IATA": "ACY",
+    "name": "ATLANTIC CITY INTERNATIONAL",
+    "city/town": "ATLANTIC CITY",
+    "country": "USA",
+    "altitude": 23,
+    "lat": 39.458,
+    "lng": -74.577
+  },
+  {
+    "ICAO": "KADM",
+    "IATA": "ADM",
+    "name": "ARDMORE MUNI",
+    "city/town": "ARDMORE",
+    "country": "USA",
+    "altitude": 233,
+    "lat": 34.303,
+    "lng": -97.019
+  },
+  {
+    "ICAO": "KADW",
+    "IATA": "ADW",
+    "name": "ANDREWS AFB",
+    "city/town": "CAMP SPRINGS",
+    "country": "USA",
+    "altitude": 86,
+    "lat": 38.811,
+    "lng": -76.867
+  },
+  {
+    "ICAO": "KAEX",
+    "IATA": "AEX",
+    "name": "ALEXANDRIA INTERNATIONAL",
+    "city/town": "ALEXANDRIA",
+    "country": "USA",
+    "altitude": 28,
+    "lat": 31.327,
+    "lng": -92.548
+  },
+  {
+    "ICAO": "KAFB",
+    "IATA": "N/A",
+    "name": "N/A",
+    "city/town": "SHEPPARD",
+    "country": "USA",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "KAGS",
+    "IATA": "AGS",
+    "name": "AUGUSTA RGNL AT BUSH FLD",
+    "city/town": "BUSH FIELD",
+    "country": "USA",
+    "altitude": 44,
+    "lat": 33.37,
+    "lng": -81.964
+  },
+  {
+    "ICAO": "KAKR",
+    "IATA": "AKR",
+    "name": "AKRON FULTON INTERNATIONAL",
+    "city/town": "AKRON",
+    "country": "USA",
+    "altitude": 326,
+    "lat": 41.038,
+    "lng": -81.467
+  },
+  {
+    "ICAO": "KALB",
+    "IATA": "ALB",
+    "name": "ALBANY INTERNATIONAL",
+    "city/town": "ALBANY",
+    "country": "USA",
+    "altitude": 87,
+    "lat": 42.748,
+    "lng": -73.803
+  },
+  {
+    "ICAO": "KALC",
+    "IATA": "N/A",
+    "name": "N/A",
+    "city/town": "LIME ACRES",
+    "country": "SOUTH AFRICA",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "KALI",
+    "IATA": "ALI",
+    "name": "ALICE INTERNATIONAL",
+    "city/town": "ALICE",
+    "country": "USA",
+    "altitude": 55,
+    "lat": 27.741,
+    "lng": -98.027
+  },
+  {
+    "ICAO": "KAMA",
+    "IATA": "AMA",
+    "name": "AMARILLO INTERNATIONAL",
+    "city/town": "AMARILLO",
+    "country": "USA",
+    "altitude": 1100,
+    "lat": 35.219,
+    "lng": -101.706
+  },
+  {
+    "ICAO": "KANB",
+    "IATA": "ANB",
+    "name": "ANNISTON METROPOLITAN",
+    "city/town": "ANNISTON",
+    "country": "USA",
+    "altitude": 187,
+    "lat": 33.588,
+    "lng": -85.858
+  },
+  {
+    "ICAO": "KAND",
+    "IATA": "AND",
+    "name": "ANDERSON RGNL",
+    "city/town": "ANDERSEN",
+    "country": "USA",
+    "altitude": 239,
+    "lat": 34.495,
+    "lng": -82.709
+  },
+  {
+    "ICAO": "KAOO",
+    "IATA": "AOO",
+    "name": "ALTOONA BLAIR CO",
+    "city/town": "ALTOONA",
+    "country": "USA",
+    "altitude": 459,
+    "lat": 40.296,
+    "lng": -78.32
+  },
+  {
+    "ICAO": "KAPG",
+    "IATA": "APG",
+    "name": "PHILLIPS AAF",
+    "city/town": "ABERDEEN",
+    "country": "USA",
+    "altitude": 18,
+    "lat": 39.466,
+    "lng": -76.169
+  },
+  {
+    "ICAO": "KARA",
+    "IATA": "ARA",
+    "name": "ACADIANA REGIONAL",
+    "city/town": "LOUISIANA",
+    "country": "USA",
+    "altitude": 8,
+    "lat": 30.038,
+    "lng": -91.884
+  },
+  {
+    "ICAO": "KART",
+    "IATA": "ART",
+    "name": "WATERTOWN INTERNATIONAL",
+    "city/town": "WATERTOWN",
+    "country": "USA",
+    "altitude": 100,
+    "lat": 43.992,
+    "lng": -76.022
+  },
+  {
+    "ICAO": "KATL",
+    "IATA": "ATL",
+    "name": "THE WILLIAM B HARTSFIELD ATLANTA INTERNATIONAL",
+    "city/town": "ATLANTA",
+    "country": "USA",
+    "altitude": 313,
+    "lat": 33.64,
+    "lng": -84.427
+  },
+  {
+    "ICAO": "KAUG",
+    "IATA": "AUG",
+    "name": "AUGUSTA STATE",
+    "city/town": "AUGUSTA",
+    "country": "USA",
+    "altitude": 108,
+    "lat": 44.321,
+    "lng": -69.797
+  },
+  {
+    "ICAO": "KAUS",
+    "IATA": "AUS",
+    "name": "AUSTIN BERGSTROM INTERNATIONAL",
+    "city/town": "AUSTIN",
+    "country": "USA",
+    "altitude": 166,
+    "lat": 30.194,
+    "lng": -97.67
+  },
+  {
+    "ICAO": "KAYE",
+    "IATA": "N/A",
+    "name": "N/A",
+    "city/town": "FORT DEVENS",
+    "country": "USA",
+    "altitude": 0,
+    "lat": 0,
+    "lng": 0
+  },
+  {
+    "ICAO": "KBAB",
+    "IATA": "BAB",
+    "name": "BEALE AFB",
+    "city/town": "MARYSVILLE",
+    "country": "USA",
+    "altitude": 35,
+    "lat": 39.136,
+    "lng": -121.436
+  },
+  {
+    "ICAO": "KBAD",
+    "IATA": "BAD",
+    "name": "BARKSDALE AFB",
+    "city/town": "SHREVEPORT",
+    "country": "USA",
+    "altitude": 51,
+    "lat": 32.502,
+    "lng": -93.663
+  }
+]
