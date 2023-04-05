@@ -7,88 +7,53 @@
   <p>Select the map you create and get started!</p>
   <div class="menu">
     <Grid container gutter={36}>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/europe">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="36" alt="Europe">
-            </Grid>
-            <Grid xs={9}>
-              Europe
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/eu.svg" width="48" alt="Europe">
+          <br>
+          Europe
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/spain">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="36" alt="Spain">
-            </Grid>
-            <Grid xs={9}>
-              Spain
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/es.svg" width="48" alt="Spain">
+          <br>
+          Spain
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/france">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="36" alt="France">
-            </Grid>
-            <Grid xs={9}>
-              France
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/fr.svg" width="48" alt="France">
+          <br>
+          France
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/italy">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="36" alt="Italy">
-            </Grid>
-            <Grid xs={9}>
-              Italy
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/it.svg" width="48" alt="Italy">
+          <br>
+          Italy
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/germany">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="36" alt="Germany">
-            </Grid>
-            <Grid xs={9}>
-              Germany
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/de.svg" width="48" alt="Germany">
+          <br>
+          Germany
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/uk">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="36" alt="United Kingdom">
-            </Grid>
-            <Grid xs={9}>
-              United Kingdom
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/uk.svg" width="48" alt="United Kingdom">
+          <br>
+          United Kingdom
         </a>
       </Grid>
-      <Grid xs={12} sm={6} md={4} lg={3}>
+      <Grid xs={6} sm={4} md={3} lg={3}>
         <a href="/#/us">
-          <Grid container gutter={12}>
-            <Grid xs={3}>
-              <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="36" alt="United States">
-            </Grid>
-            <Grid xs={9}>
-              United States
-            </Grid>
-          </Grid>
+          <img src="https://hatscripts.github.io/circle-flags/flags/us.svg" width="48" alt="United States">
+          <br>
+          United States
         </a>
       </Grid>
     </Grid>	
@@ -129,9 +94,12 @@
     justify-content: space-between;
   }
   .menu a {
-    font-size: 1.5em;
-    padding: 1em 0;
+    font-size: 1em;
+    display: inline-block;
     margin: auto;
     white-space: nowrap;
+  }
+  .menu img {
+    margin-bottom: 0.5em;
   }
 </style>
