@@ -20,3 +20,6 @@ export const stored_visited_list_us = writable('stored_visited_list_us', {
 
 export const stored_visited_list_europe = writable('stored_visited_list_europe', {
 })
+
+export const stored_visited_list_japan = writable('stored_visited_list_japan', {
+})
