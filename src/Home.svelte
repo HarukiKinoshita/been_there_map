@@ -56,6 +56,13 @@
           United States
         </a>
       </Grid>
+      <Grid xs={6} sm={4} md={3} lg={3}>
+        <a href="/#/japan">
+          <img src="https://hatscripts.github.io/circle-flags/flags/jp.svg" width="48" alt="Japan">
+          <br>
+          Japan
+        </a>
+      </Grid>
     </Grid>	
   </div>
   <div id="about">
